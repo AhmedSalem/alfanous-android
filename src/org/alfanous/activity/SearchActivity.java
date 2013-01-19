@@ -1,14 +1,8 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package org.alfanous.activity;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import org.alfanous.android.app.util.Util;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,11 +12,22 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import org.alfanous.android.app.util.Util;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class AlfanousMainActivity extends Activity implements OnItemClickListener {
+/**
+ *
+ * @author Ahmed Salem
+ */
+public class SearchActivity extends Activity implements AdapterView.OnItemClickListener {
 	// http://www.alfanous.org/json?search=%D9%81%D8%B3%D9%8A%D9%83%D9%81%D9%8A%D9%83%D9%87%D9%85&highlight=bbcode&sortedby=tanzil&page=1
 	//
 	private static final String rssFeed = "https://www.dropbox.com/s/rhk01nqlyj5gixl/jsonparsing.txt?dl=1";
@@ -42,15 +47,15 @@ public class AlfanousMainActivity extends Activity implements OnItemClickListene
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.search);
 
 		listView = (ListView) findViewById(R.id.listview);
 		listView.setOnItemClickListener(this);
 
 		arrayOfList = new ArrayList<Item>();
 
-		if (Util.isNetworkAvailable(AlfanousMainActivity.this)) {
-			new MyTask().execute(rssFeed);
+		if (Util.isNetworkAvailable(SearchActivity.this)) {
+			new SearchActivity.MyTask().execute(rssFeed);
 		} else {
 			showToast("No Network Connection!!!");
 		}
@@ -67,7 +72,7 @@ public class AlfanousMainActivity extends Activity implements OnItemClickListene
 		protected void onPreExecute() {
 			super.onPreExecute();
 
-			pDialog = new ProgressDialog(AlfanousMainActivity.this);
+			pDialog = new ProgressDialog(SearchActivity.this);
 			pDialog.setMessage("Loading...");
 			pDialog.setCancelable(false);
 			pDialog.show();
@@ -88,7 +93,7 @@ public class AlfanousMainActivity extends Activity implements OnItemClickListene
 
 			if (null == result || result.length() == 0) {
 				showToast("No data found from web!!!");
-				AlfanousMainActivity.this.finish();
+				SearchActivity.this.finish();
 			} else {
 
 				try {
@@ -141,7 +146,7 @@ public class AlfanousMainActivity extends Activity implements OnItemClickListene
 	}
 
 	private void showDeleteDialog(final int position) {
-		AlertDialog alertDialog = new AlertDialog.Builder(AlfanousMainActivity.this).create();
+		AlertDialog alertDialog = new AlertDialog.Builder(SearchActivity.this).create();
 		alertDialog.setTitle("Delete ??");
 		alertDialog.setMessage("Are you sure want to Delete it??");
 		alertDialog.setButton("No", new DialogInterface.OnClickListener() {
@@ -163,11 +168,11 @@ public class AlfanousMainActivity extends Activity implements OnItemClickListene
 	}
 
 	public void setAdapterToListview() {
-		objAdapter = new NewsRowAdapter(AlfanousMainActivity.this, R.layout.row, arrayOfList);
+		objAdapter = new NewsRowAdapter(SearchActivity.this, R.layout.row, arrayOfList);
 		listView.setAdapter(objAdapter);
 	}
 
 	public void showToast(String msg) {
-		Toast.makeText(AlfanousMainActivity.this, msg, Toast.LENGTH_LONG).show();
+		Toast.makeText(SearchActivity.this, msg, Toast.LENGTH_LONG).show();
 	}
 }

@@ -20,7 +20,7 @@
 
 package org.alfanous.android.app;
 
-import org.alfanous.activity.AlfanousMainActivity;
+ 
 import org.alfanous.activity.R;
 
 import android.app.Activity;
@@ -29,6 +29,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
+import org.alfanous.activity.MainActivity;
 
 public class SplashScreen extends Activity {
     private boolean active = true;
@@ -58,7 +59,7 @@ public class SplashScreen extends Activity {
                 } catch (InterruptedException e) {
                     // do nothing
                 } finally {
-                    startActivity(new Intent(SplashScreen.this, AlfanousMainActivity.class));
+                    startActivity(new Intent(SplashScreen.this, MainActivity.class));
                     finish();
                 }
             }
