@@ -97,21 +97,63 @@ public class SearchActivity extends Activity implements AdapterView.OnItemClickL
 			} else {
 
 				try {
+
+					ArrayList<QuranItem> quranItems = new ArrayList<QuranItem>();
+					
 					JSONObject mainJson = new JSONObject(result);
-					JSONArray jsonArray = mainJson.getJSONArray(ARRAY_NAME);
-					for (int i = 0; i < jsonArray.length(); i++) {
-						JSONObject objJson = jsonArray.getJSONObject(i);
+					JSONObject ayasObject = mainJson.getJSONObject("ayas");
+					
+					for (int i = 1; i < ayasObject.length()+1; i++) {
+						QuranItem quranItem = new QuranItem();
+						
+						JSONObject ayasElement = ayasObject.getJSONObject(""+i);
+						
+						JSONObject sajdaObject =  ayasElement.getJSONObject("sajda");
+						
+						JSONObject suraObject =  ayasElement.getJSONObject("sura");
+						JSONObject suraStatObject =  suraObject.getJSONObject("stat");
+						
+						JSONObject ayaObject =  ayasElement.getJSONObject("aya");
+						JSONObject statObject =  ayasElement.getJSONObject("stat");
+						JSONObject themeObject =  ayasElement.getJSONObject("theme");
+						JSONObject positionObject =  ayasElement.getJSONObject("position");
+						
+						
+						
+						quranItem.setSajdaExists(sajdaObject.getBoolean("exist")); 
+						
+						if (quranItem.isSajdaExists()){
+							quranItem.setSajda_type(sajdaObject.getString("type"));
+							quranItem.setSajda_id(sajdaObject.getInt("id"));
+						}
+						
+						quranItem.setSuraStatAyas(suraStatObject.getInt("ayas"));
+						quranItem.setSuraStatLetters(suraStatObject.getInt("letters"));
+						quranItem.setSuraStatGODNames(suraStatObject.getInt("godnames"));
+						quranItem.setSuraStatWords(suraStatObject.getInt("words"));
+						
+						quranItem.setSura_order(suraObject.getInt("order"));
+						quranItem.setSuraType(suraObject.getString("type"));
+						quranItem.setSuraName(suraObject.getString("name"));
+						quranItem.setSuraId(suraObject.getInt("id"));
+						
+						quranItem.setAyaId(ayaObject.getInt("id"));
+						quranItem.setAyaText(ayaObject.getString("text"));
+						quranItem.setAyaTextUthmani(ayaObject.getString("text_uthmani"));
+						quranItem.setAyaRecitation(ayaObject.getString("recitation"));
+						
+						
 
-						Item objItem = new Item();
-
-						objItem.setId(objJson.getInt(ID));
-						objItem.setName(objJson.getString(NAME));
-						objItem.setCity(objJson.getString(CITY));
-						objItem.setGender(objJson.getString(GENDER));
-						objItem.setAge(objJson.getInt(AGE));
-						objItem.setBirthdate(objJson.getString(BIRTH_DATE));
-
-						arrayOfList.add(objItem);
+						
+						
+						/*sajda
+						sura
+						aya
+						stat
+						theme
+						position
+*/
+						quranItems.add(quranItem);
 
 					}
 				} catch (JSONException e) {
