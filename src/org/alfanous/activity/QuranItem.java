@@ -17,11 +17,11 @@ public class QuranItem {
 	private String suraType;
 	private int sura_order;
 	private int juz;
-	private int hizb;
+	private int positionHizb;
 	private int nisf;
-	private int rub;
-	private int page;
-	private int manzil;
+	private int positionRubu;
+	private int positionPage;
+	private int positionManzil;
 	private int ruku;
 	private boolean sajdaExists;
 	private int sajda_id;
@@ -32,6 +32,13 @@ public class QuranItem {
 	private int suraStatGODNames;
 	private int suraStatWords;
 	
+	private int statLetters;
+	private int statGodNames;
+	private int statWords;
+	
+	private String themeChapter;
+	private String themeTopic;
+	private String themeSubTopic;
 	
 	public int getSuraStatAyas() {
 		return suraStatAyas;
@@ -169,12 +176,12 @@ public class QuranItem {
 		this.juz = juz;
 	}
 
-	public int getHizb() {
-		return hizb;
+	public int getPositionHizb() {
+		return positionHizb;
 	}
 
-	public void setHizb(int hizb) {
-		this.hizb = hizb;
+	public void setPositionHizb(int positionHizb) {
+		this.positionHizb = positionHizb;
 	}
 
 	public int getNisf() {
@@ -185,28 +192,28 @@ public class QuranItem {
 		this.nisf = nisf;
 	}
 
-	public int getRub() {
-		return rub;
+	public int getPositionRubu() {
+		return positionRubu;
 	}
 
-	public void setRub(int rub) {
-		this.rub = rub;
+	public void setPositionRubu(int positionRubu) {
+		this.positionRubu = positionRubu;
 	}
 
-	public int getPage() {
-		return page;
+	public int getPositionPage() {
+		return positionPage;
 	}
 
-	public void setPage(int page) {
-		this.page = page;
+	public void setPositionPage(int positionPage) {
+		this.positionPage = positionPage;
 	}
 
-	public int getManzil() {
-		return manzil;
+	public int getPositionManzil() {
+		return positionManzil;
 	}
 
-	public void setManzil(int manzil) {
-		this.manzil = manzil;
+	public void setPositionManzil(int positionManzil) {
+		this.positionManzil = positionManzil;
 	}
 
 	public int getRuku() {
@@ -246,6 +253,54 @@ public class QuranItem {
 
 	public void setAyaRecitation(String ayaRecitation) {
 		this.ayaRecitation = ayaRecitation;
+	}
+
+	public int getStatLetters() {
+		return statLetters;
+	}
+
+	public void setStatLetters(int statLetters) {
+		this.statLetters = statLetters;
+	}
+
+	public int getStatGodNames() {
+		return statGodNames;
+	}
+
+	public void setStatGodNames(int statGodNames) {
+		this.statGodNames = statGodNames;
+	}
+
+	public int getStatWords() {
+		return statWords;
+	}
+
+	public void setStatWords(int statWords) {
+		this.statWords = statWords;
+	}
+
+	public String getThemeChapter() {
+		return themeChapter;
+	}
+
+	public void setThemeChapter(String themeChapter) {
+		this.themeChapter = themeChapter;
+	}
+
+	public String getThemeTopic() {
+		return themeTopic;
+	}
+
+	public void setThemeTopic(String themeTopic) {
+		this.themeTopic = themeTopic;
+	}
+
+	public String getThemeSubTopic() {
+		return themeSubTopic;
+	}
+
+	public void setThemeSubTopic(String themeSubTopic) {
+		this.themeSubTopic = themeSubTopic;
 	}
 
 

@@ -100,10 +100,15 @@ public class SearchActivity extends Activity implements AdapterView.OnItemClickL
 
 					ArrayList<QuranItem> quranItems = new ArrayList<QuranItem>();
 					
+					
+					
 					JSONObject mainJson = new JSONObject(result);
 					JSONObject ayasObject = mainJson.getJSONObject("ayas");
 					
+					
+					
 					for (int i = 1; i < ayasObject.length()+1; i++) {
+						
 						QuranItem quranItem = new QuranItem();
 						
 						JSONObject ayasElement = ayasObject.getJSONObject(""+i);
@@ -142,20 +147,24 @@ public class SearchActivity extends Activity implements AdapterView.OnItemClickL
 						quranItem.setAyaTextUthmani(ayaObject.getString("text_uthmani"));
 						quranItem.setAyaRecitation(ayaObject.getString("recitation"));
 						
+						quranItem.setStatLetters(statObject.getInt("letters"));
+						quranItem.setStatGodNames(statObject.getInt("godnames"));
+						quranItem.setStatWords(statObject.getInt("words"));
 						
-
+						quranItem.setThemeChapter(themeObject.getString("chapter"));
+						quranItem.setThemeTopic(themeObject.getString("topic"));
+						quranItem.setThemeSubTopic(themeObject.getString("subtopic"));
 						
+						quranItem.setPositionRubu(positionObject.getInt("rubu"));
+						quranItem.setPositionManzil(positionObject.getInt("manzil"));
+						quranItem.setPositionHizb(positionObject.getInt("hizb"));
+						quranItem.setPositionPage(positionObject.getInt("page"));
 						
-						/*sajda
-						sura
-						aya
-						stat
-						theme
-						position
-*/
 						quranItems.add(quranItem);
-
 					}
+					
+					
+					
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
