@@ -11,14 +11,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class NewsRowAdapter extends ArrayAdapter<Item> {
+public class NewsRowAdapter extends ArrayAdapter<QuranItem> {
 
 	private Activity activity;
-	private List<Item> items;
-	private Item objBean;
+	private List<QuranItem> items;
+	private QuranItem objBean;
 	private int row;
 
-	public NewsRowAdapter(Activity act, int resource, List<Item> arrayList) {
+	public NewsRowAdapter(Activity act, int resource, List<QuranItem> arrayList) {
 		super(act, resource, arrayList);
 		this.activity = act;
 		this.row = resource;
@@ -45,36 +45,30 @@ public class NewsRowAdapter extends ArrayAdapter<Item> {
 
 		objBean = items.get(position);
 
-		holder.tvName = (TextView) view.findViewById(R.id.tvname);
-		holder.tvCity = (TextView) view.findViewById(R.id.tvcity);
-		holder.tvBDate = (TextView) view.findViewById(R.id.tvbdate);
-		holder.tvGender = (TextView) view.findViewById(R.id.tvgender);
-		holder.tvAge = (TextView) view.findViewById(R.id.tvage);
+		holder.ayaText = (TextView) view.findViewById(R.id.ayaText);
+		holder.ayaSura = (TextView) view.findViewById(R.id.ayaSura);
+		holder.ayaNumber = (TextView) view.findViewById(R.id.ayaNumber);
+//		holder.tvBDate = (TextView) view.findViewById(R.id.tvbdate);
+//		holder.tvGender = (TextView) view.findViewById(R.id.tvgender);
+//		holder.tvAge = (TextView) view.findViewById(R.id.tvage);
 
-		if (holder.tvName != null && null != objBean.getName()
-				&& objBean.getName().trim().length() > 0) {
-			holder.tvName.setText(Html.fromHtml(objBean.getName()));
+		
+		if (holder.ayaText != null && null != objBean.getAyaText()
+				&& objBean.getAyaText().trim().length() > 0) {
+			holder.ayaText.setText(Html.fromHtml(objBean.getAyaText()));
 		}
-		if (holder.tvCity != null && null != objBean.getCity()
-				&& objBean.getCity().trim().length() > 0) {
-			holder.tvCity.setText(Html.fromHtml(objBean.getCity()));
+		if (holder.ayaSura != null && null != objBean.getSuraName()
+				&& objBean.getSuraName().trim().length() > 0) {
+			holder.ayaSura.setText(Html.fromHtml("سورة:"+objBean.getSuraName()));
 		}
-		if (holder.tvBDate != null && null != objBean.getBirthdate()
-				&& objBean.getBirthdate().trim().length() > 0) {
-			holder.tvBDate.setText(Html.fromHtml(objBean.getBirthdate()));
-		}
-		if (holder.tvGender != null && null != objBean.getGender()
-				&& objBean.getGender().trim().length() > 0) {
-			holder.tvGender.setText(Html.fromHtml(objBean.getGender()));
-		}
-		if (holder.tvAge != null && objBean.getAge() > 0) {
-			holder.tvAge.setText(Html.fromHtml("" + objBean.getAge()));
+		if (holder.ayaNumber != null && objBean.getAyaId() > 0) {
+			holder.ayaNumber.setText(Html.fromHtml("الآيه رقم:"+objBean.getAyaId()));
 		}
 
 		return view;
 	}
 
 	public class ViewHolder {
-		public TextView tvName, tvCity, tvBDate, tvGender, tvAge;
+		public TextView ayaText, ayaSura, ayaNumber;
 	}
 }

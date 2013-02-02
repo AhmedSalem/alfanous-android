@@ -86,16 +86,14 @@ public final class R {
     }
     public static final class id {
         public static final int about=0x7f090002;
+        public static final int ayaNumber=0x7f090007;
+        public static final int ayaSura=0x7f090006;
+        public static final int ayaText=0x7f090005;
         public static final int custome_search_add_btn=0x7f090001;
-        public static final int listview=0x7f09000a;
+        public static final int listview=0x7f090008;
         public static final int relativelay=0x7f090004;
         public static final int search_btn=0x7f090000;
         public static final int settings=0x7f090003;
-        public static final int tvage=0x7f090009;
-        public static final int tvbdate=0x7f090007;
-        public static final int tvcity=0x7f090006;
-        public static final int tvgender=0x7f090008;
-        public static final int tvname=0x7f090005;
     }
     public static final class layout {
         public static final int about=0x7f030000;

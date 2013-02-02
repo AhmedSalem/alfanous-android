@@ -7,12 +7,12 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/tvname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/ayaText"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="5dip"
-        android:maxLines="1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dip"
         android:text="Name"
         android:textColor="@android:color/black"
         android:textSize="14dp"
@@ -20,57 +20,29 @@
     </TextView>
 
     <TextView
-        android:id="@+id/tvcity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tvname"
-        android:layout_marginLeft="5dip"
-        android:layout_marginTop="3dip"
-        android:maxLines="1"
-        android:text="City"
-        android:textColor="@android:color/black"
-        android:textSize="14dp" >
-    </TextView>
-
-    <TextView
-        android:id="@+id/tvbdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tvcity"
-        android:layout_marginLeft="5dip"
-        android:layout_marginTop="3dip"
-        android:maxLines="1"
-        android:text="Birthdate"
-        android:textColor="@android:color/black"
-        android:textSize="14dp" >
-    </TextView>
-
-    <TextView
-        android:id="@+id/tvgender"
+        android:id="@+id/ayaSura"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="15dip"
-        android:maxLines="1"
-        android:text="Gender"
-        android:textColor="@android:color/black"
-        android:textSize="14dp"
-        android:textStyle="bold" >
-    </TextView>
-
-    <TextView
-        android:id="@+id/tvage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/tvgender"
+        android:layout_below="@+id/ayaText"
         android:layout_marginRight="15dip"
         android:layout_marginTop="3dip"
         android:maxLines="1"
-        android:text="Age"
+        android:text="Sura"
+        android:textColor="@android:color/black"
+        android:textSize="14dp" >
+    </TextView>
+    
+    <TextView
+        android:id="@+id/ayaNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ayaText"
+        android:layout_marginLeft="15dip"
+        android:layout_marginTop="3dip"
+        android:maxLines="1"
+        android:text="Aya"
         android:textColor="@android:color/black"
         android:textSize="14dp" >
     </TextView>
